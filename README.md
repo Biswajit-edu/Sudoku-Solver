@@ -1,6 +1,6 @@
 # Sudoku Solver
 
-This web application provides an efficient solution of Sudoku puzzles using a combination of *image processing, **machine learning, and **Backtracking Algorithm* techniques.
+This web application efficiently solves Sudoku puzzles using a combination of *image processing, **machine learning, and **Backtracking Algorithm* techniques.
 
 ---
 
@@ -42,7 +42,7 @@ The implemented Sudoku Solver pipeline includes:
    - Handle empty cells appropriately.
 
 3. *Backtracking Algorithm*:
-   - Solve the recognized grid using recursive backtracking, ensuring that the solution follows Sudoku rules.
+   - Solve the recognized grid using recursive backtracking, ensuring the solution follows Sudoku rules.
 
 4. *Frontend Integration*:
    - Enable users to upload images and view results interactively through the ReactJS-based frontend.
@@ -54,24 +54,21 @@ The implemented Sudoku Solver pipeline includes:
 ### Installation
 
 1. *Clone this repository*:
-
-    bash
+    ```bash
     git clone https://github.com/YourUsername/Sudoku-Solver.git
     cd Sudoku-Solver
-    
-
+    ```
 2. *Install frontend dependencies*:
-
-    bash
+    ```bash
     cd Frontend
     npm install
-    
+    ```  
 3. *Install backend dependencies*:
 
-    bash
+    ```bash
     cd Backend
     pip install -r requirements.txt
-    
+    ```
 
 4. *Set up the CNN model*:
    - Place your pre-trained CNN model file in the Model directory.
@@ -82,17 +79,17 @@ The implemented Sudoku Solver pipeline includes:
 
 1. *Start the backend server*:
 
-    bash
+    ```bash
     cd Backend
     python server.py
-    
+    ```
 
 2. *Run the frontend*:
 
-    bash
+    ```bash
     cd Frontend
     npm start
-    
+    ```
 
 3. *Upload an image*:
    - Use the frontend interface to upload a Sudoku puzzle image.
