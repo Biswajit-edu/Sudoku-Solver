@@ -1,0 +1,103 @@
+.navbar {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    padding: 5px;
+    padding-left: 2%;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 1.875rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #9333ea, #db2777);
+    -webkit-background-clip: text; /* Clips the gradient to the text */
+    color: transparent;
+  }
+  
+  .Rightcomp {
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    padding-right: 2%;
+    cursor: pointer;
+    gap: 10px;
+    position: relative;
+  }
+  
+  .menu {
+    position: relative;
+  }
+  
+  .menu-inner {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu-item {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .submenu{
+    display: none;
+  }
+  
+  .menu-link {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 25px;
+    cursor: pointer;
+  }
+  
+  .submenu {
+    position: absolute;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 10;
+    margin-top: 10px;
+    margin-right: 50px;
+  }
+  
+  .submenu.active {
+    display: block;
+    margin-top: 10px;
+    margin-right: 60px;
+  }
+  
+  .submenu-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+  }
+  
+  .submenu-item {
+    padding: 6px 14px;
+    font-size: medium;
+    cursor: pointer;
+  }
+  
+  .submenu-item:hover {
+    border: #bdbcbe solid 1px;
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    border-radius: 4px;
+  }
+  
+  .dark-toggle {
+    cursor: pointer;
+  }
+
+  .dark_card{
+    background-color: #2d3748;
+    color: #f1f1f1;
+  }
+  .light_card{
+    background: linear-gradient(to bottom right, #ebf8ff, #f3e8ff, #ffe4e6);;
+    color: #1C1D22;
+  }
+  

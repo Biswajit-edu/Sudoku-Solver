@@ -1,0 +1,40 @@
+.box {
+    display: flex;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+  .img-preview {
+    overflow: hidden;
+  }
+  .file-upload-label {
+    display: inline-block;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    color: white;
+    font-family: sans-serif;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1.5em;
+    margin-left: 5px;
+    border: #A288E3;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  .file-upload-label:hover{
+    color: #151515;
+    transition: all 1s ease;
+    border: 1px solid black;
+}
+.light_comp{
+  background-color: #ffffff;
+  color:#1d251d
+}
+.dark_comp{
+  background-color: #1f2937;
+  color: #6b7280;
+}
+.cont{
+  background-color: rgba(255, 255, 255, 0); 
+  backdrop-filter: blur(5px); 
+}

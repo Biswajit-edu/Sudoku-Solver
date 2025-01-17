@@ -1,0 +1,127 @@
+.dropbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 2px dashed #d3d3d3;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .excel-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .excel-icon {
+    width: 28px;
+    height: 28px;
+    background-color: #1f7a1f;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .dropbox-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .drop-file-text {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .or-text,
+  .browse-text {
+    font-weight: 500;
+    color: #0066cc;
+  }
+  
+  .upload-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .upload-btn2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+ .left_cont{
+    width:500px;
+    height:520px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  .imagebox{
+    width:450px;
+    height:420px;
+    border: 2px dashed;
+    border-radius: 7px;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: large; 
+    font-weight: bold;
+  }
+  .imagebox:hover{
+    background-color: #faf5ff;
+  }
+  .cropped-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; 
+  }
+  .btn_class{
+    display: flex;
+    gap:15px;
+  }
+  /* .light_comp{
+    background-color: #ffffff;
+    color:#1d251d
+  }
+  .dark_comp{
+    background-color: #1f2937;
+    color: #6b7280;
+  } */

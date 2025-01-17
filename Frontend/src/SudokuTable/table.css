@@ -1,0 +1,143 @@
+.container {
+    width:470px;
+    height:520px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+    justify-content: center;
+  }
+  button {
+    margin-top: 15px;
+    font-size: 1.5em;
+    color: white;
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    margin-left: 5px;
+    border: #A288E3;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+  .Btn1{
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .Btn2{
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover{
+      color: #151515;
+      transition: all 1s ease;
+      cursor: pointer;
+      border: 1px solid black;
+  }
+.control{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+
+  }
+  
+  @media screen and (max-width: 460px) {
+      .padd {
+          font-size: 4.2rem;
+      }
+  
+      table {
+        font-size: 1.5em;
+      }
+  
+      button{
+          font-size: 1rem;
+      }
+  }
+
+  .sudoku-container.hover-effect:hover {
+    transform: scale(1.02);
+  }
+  
+  .sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 4px;
+    padding: 1.5rem;
+  }
+  
+  .grid-cell {
+    width: 38px;
+    height: 38px;
+    font-size: large;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.375rem;
+    border: 1px solid #ccc;
+    background-color: var(--grid-background);
+    color: var(--grid-color);
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .container.light_comp .grid-cell {
+    --grid-background: #f9f9f9; 
+    --grid-color: #000000; 
+  }
+  
+  .container.dark_comp .grid-cell {
+    --grid-background: #374151; 
+    --grid-color: #ffffff; 
+    border: none;
+    width: 39px;
+    height: 39px;
+  }
+  .container.dark_comp .grid-cell:hover {
+    border: 1px solid #6b7280;
+  }
+  .container.light_comp .grid-cell:hover {
+    border: 1px solid #6b7280;
+  }
+  .grid-cell:focus {
+    outline: none;
+    border-color: #805ad5;
+  }
+  
+  .dark-mode .grid-cell {
+    background-color: #4a5568;
+    color: white;
+    border-color: #718096;
+  }
+  
+  .dark-mode .grid-cell:focus {
+    background-color: #2d3748;
+  }
+  
+  .light-mode .grid-cell {
+    background-color: #f7fafc;
+    color: black;
+    border-color: #e2e8f0;
+  }
+  
+  .light-mode .grid-cell:focus {
+    background-color: #f3e8ff;
+  }
+  
+  
