@@ -20,30 +20,64 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
     window.location.reload(false);
   }
 
+  // Close menu when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuActive && !event.target.closest('.menu')) {
+        setIsMenuActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuActive]);
+
   return (
-        <div className="navbar">
-      <div className="logo" onClick={refreshPage}> Sudoku Solver </div>
+    <div className={`navbar ${isDarkMode ? 'dark' : 'light'}`}>
+      <div className="logo" onClick={refreshPage}>
+        Sudoku Solver
+      </div>
       <div className="Rightcomp">
-        <div className="dark-toggle" onClick={toggleDarkMode}>
-          {isDarkMode ? <Moon/> : <Sun/>}
+        <div 
+          className="dark-toggle" 
+          onClick={toggleDarkMode}
+          role="button"
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDarkMode ? <Moon size={20} /> : <Sun size={20} />}
         </div>
-        <div className={`menu`}>
+        <div className="menu">
           <ul className="menu-inner">
-            <li className="menu-item" onClick={toggleMenu}>
-              <a className="menu-link">
-                <User/> <i className="bx bx-chevron-right"></i>
-              </a>
-              <div className={`submenu ${isDarkMode ? 'dark_card' : 'light_card'} ${isMenuActive ? "active" : ""}`}>
-                <ul className="submenu-list">
-                  <button className="submenu-item">Login</button>
-                  <button className="submenu-item">Register</button>
-                </ul>
-              </div>
+            <li className="menu-item">
+              <button 
+                className="menu-link"
+                onClick={toggleMenu}
+                aria-expanded={isMenuActive}
+                aria-haspopup="true"
+              >
+                <User size={20} />
+                
+              </button>
+              {isMenuActive && (
+                <div 
+                  className={`submenu active`}
+                  role="menu"
+                >
+                  <ul className="submenu-list">
+                    <li>
+                      <button className="submenu-item" role="menuitem">Login</button>
+                    </li>
+                    <li>
+                      <button className="submenu-item" role="menuitem">Register</button>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </li>
           </ul>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
