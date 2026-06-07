@@ -4,4 +4,4 @@ matplotlib==3.10.0
 numpy==2.2.1
 opencv_python==4.10.0.84
 Pillow==11.1.0
-skimage==0.0
+# scikit-image removed; using OpenCV for resizing to avoid build issues on Windows

@@ -44,8 +44,8 @@ const Table = ({ matrix, setMatrix, predictedMatrix, isDarkMode }) => {
   };
   
   return (
-    <div>
-      <div className={`container ${isDarkMode ? 'dark_comp' : 'light_comp'}`}>
+      <div className={`right_cont ${isDarkMode ? 'dark_comp' : 'light_comp'}`}>
+        Extracted Sudoku Will show here
         <div className="sudoku-grid">
           {matrix.map((row, rowIndex) =>
             row.map((value, colIndex) => (
@@ -69,7 +69,6 @@ const Table = ({ matrix, setMatrix, predictedMatrix, isDarkMode }) => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 

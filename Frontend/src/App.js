@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div>
-      <Navbar isDarkMode={isDarkMode}setIsDarkMode={setIsDarkMode}/>
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
       <hr style={{ width: '100%', textAlign: 'left', margin: '0', padding:'0' }} />
       <div className={`Components ${isDarkMode?'dark_card':'light_card'}`}>
         <Image_show 

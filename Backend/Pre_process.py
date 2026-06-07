@@ -3,7 +3,6 @@ import cv2
 import warnings
 import operator
 import numpy as np
-from skimage.transform import resize
 warnings.filterwarnings('ignore')
 
 def show_digits(digits, colour=255):

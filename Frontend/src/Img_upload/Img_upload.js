@@ -31,11 +31,9 @@ const defaultSrc =
     };
   
     return (
-      <div className={` cont ${isDarkMode ? 'dark_comp' : 'light_comp'}`}>
-        <div style={{ width: "100%" }}>
-          <button onClick={() => setImage(defaultSrc)}>Use default image</button>
-          <br />
-          <br />
+      <div className={`cont ${isDarkMode ? 'dark_comp' : 'light_comp'}`}>
+        <div style={{ width: "100%", maxWidth: "100%" }}>
+          <button style={{ marginBottom: '8px' }} onClick={() => setImage(defaultSrc)}>Use default image</button>
           <Cropper
             zoomTo={0.2}
             initialAspectRatio={1}
@@ -48,15 +46,18 @@ const defaultSrc =
             responsive={true}
             autoCropArea={1}
             checkOrientation={false}
-            onInitialized={(instance) => setCropper(instance)}  // Initialize cropper
+            onInitialized={(instance) => setCropper(instance)}
             guides={true}
+            style={{ height: 400, maxWidth: '100%' }}
+            dragMode="move"
+            scalable={true}
           />
-          <div className="box" style={{ height: "80px", width: "70vh" }}>
-            <input type="file" id="upload" hidden onChange={onChange} />
+          <div className="box">
+            <input type="file" id="upload" hidden onChange={onChange} accept="image/*" />
             <label htmlFor="upload" className="file-upload-label">
               Choose file
             </label>
-            <button style={{ display: "flex" }} onClick={getCropData}>
+            <button style={{ marginTop: '14px' }} onClick={getCropData}>
               Crop Image
             </button>
           </div>

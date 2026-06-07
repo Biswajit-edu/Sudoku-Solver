@@ -1,46 +1,51 @@
-.container {
-    width:470px;
-    height:520px;
+.right_cont {
+    width: min(470px, 95vw);
+    height: auto;
+    min-height: 520px;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 15px;
+    padding: 1rem;
     justify-content: center;
+    margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: bold;
+    text-align: center;
   }
   button {
-    margin-top: 15px;
-    font-size: 1.5em;
+    /* margin-top: 15px; */
+    /* font-size: clamp(1rem, 2.5vw, 1.5em); */
     color: white;
     background: linear-gradient(to right, #3b82f6, #8b5cf6);
-    margin-left: 5px;
-    border: #A288E3;
-    border-radius: 5px;
-    padding: 5px 10px;
+    /* margin-left: 5px; */
+    /* border: #A288E3; */
+    /* border-radius: 5px; */
+    /* padding: 0.5rem 1rem; */
   }
   .Btn1{
     background: linear-gradient(to right, #a855f7, #ec4899);
     display: flex;
-    align-items: center;
     gap: 8px;
-    margin-top: 20px;
+    margin: 10px 0px 0px 5px; /*top right bottom left*/
     padding: 10px 20px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: clamp(0.5rem, 2vw, 1.25em);
   }
   .Btn2{
     background: linear-gradient(to right, #3b82f6, #8b5cf6);
     display: flex;
-    align-items: center;
     gap: 8px;
-    margin-top: 20px;
+     margin: 10px 0px 0px 5px; /*top right bottom left*/
     padding: 10px 20px;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: clamp(0.5rem, 2vw, 1.25em);
   }
   
   button:hover{
@@ -57,18 +62,82 @@
 
   }
   
+  @media (min-width: 770px) and (max-width: 1024px) {
+    .grid-cell{
+      /* font-size: clamp(12px, 2.5vw, 16px); */
+        width: 4vw !important;
+        height: 4vw !important;
+    }
+    .right_cont{
+      width: 50vw !important;
+      padding: 1rem 0rem;
+    }
+  }
+
+  /* Tablet devices */
+  @media screen and (max-width: 768px) {
+    .container {
+      width: min(470px, 90vw);
+      padding: 0.75rem;
+    }
+    
+    .control {
+      gap: 1rem;
+    }
+    
+    .Btn1, .Btn2 {
+      padding: 8px 16px;
+    }
+  }
+
+  /* Mobile devices */
   @media screen and (max-width: 460px) {
-      .padd {
-          font-size: 4.2rem;
-      }
-  
-      table {
-        font-size: 1.5em;
-      }
-  
-      button{
-          font-size: 1rem;
-      }
+    .container {
+      width: 95vw;
+      padding: 0.5rem;
+    }
+
+    .sudoku-grid {
+      gap: 2px;
+      padding: 0.5rem;
+    }
+
+    .grid-cell {
+      border-radius: 0.25rem;
+      size: 15px;
+    }
+
+    .control {
+      gap: 0.5rem;
+    }
+
+    .Btn1, .Btn2 {
+      padding: 6px 12px;
+      margin-top: 15px;
+    }
+  }
+
+  /* Small mobile devices */
+  @media screen and (max-width: 320px) {
+    .container {
+      width: 98vw;
+      padding: 0.25rem;
+    }
+
+    .sudoku-grid {
+      gap: 1px;
+      padding: 0.25rem;
+    }
+
+    .control {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .Btn1, .Btn2 {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   .sudoku-container.hover-effect:hover {
@@ -78,14 +147,16 @@
   .sudoku-grid {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    gap: 4px;
-    padding: 1.5rem;
+    gap: clamp(2px, 0.5vw, 4px);
+    padding-top: clamp(0.5rem, 2vw, 1.5rem);
+    padding-bottom: clamp(0.5rem, 2vw, 1.5rem);
+    max-width: 450px;
   }
   
   .grid-cell {
-    width: 38px;
-    height: 38px;
-    font-size: large;
+    width: clamp(15px, 8vw, 38px);
+    height: clamp(15px, 8vw, 38px);
+    font-size: clamp(14px, 3vw, 18px);
     text-align: center;
     display: flex;
     justify-content: center;
@@ -95,6 +166,7 @@
     background-color: var(--grid-background);
     color: var(--grid-color);
     transition: background-color 0.3s, border-color 0.3s;
+    /* padding: 0; */
   }
 
   .container.light_comp .grid-cell {
@@ -120,24 +192,24 @@
     border-color: #805ad5;
   }
   
-  .dark-mode .grid-cell {
+  .dark_comp .grid-cell {
     background-color: #4a5568;
     color: white;
     border-color: #718096;
   }
   
-  .dark-mode .grid-cell:focus {
+  .dark_comp .grid-cell:focus {
     background-color: #2d3748;
   }
-  
-  .light-mode .grid-cell {
+
+  .light_comp .grid-cell {
     background-color: #f7fafc;
     color: black;
     border-color: #e2e8f0;
   }
   
-  .light-mode .grid-cell:focus {
-    background-color: #f3e8ff;
+  .light_comp .grid-cell:focus {
+    border-color: #374151;
   }
   
   

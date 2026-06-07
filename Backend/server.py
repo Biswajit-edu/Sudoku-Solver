@@ -22,15 +22,27 @@ def predict():
     img_file = request.files['img']
 
     try:
-        img = Image.open(img_file)  
-        temp_image_path = os.path.join(os.path.dirname(__file__), 'sudoku.png')
-        img.save(temp_image_path)
-        grid = sudoku()
-        grid = grid.tolist()
+        img = Image.open(img_file)
     except UnidentifiedImageError:
         return jsonify({"error": "Invalid image file provided"}), 400
 
-    return jsonify({"grid": grid}) 
+    # Save the uploaded image to a known path and pass that path into
+    # `sudoku()` so it attempts to process the exact file we saved.
+    temp_image_path = os.path.join(os.path.dirname(__file__), 'sudoku.png')
+    try:
+        img.save(temp_image_path)
+    except Exception as e:
+        return jsonify({"error": f"Failed to save uploaded image: {str(e)}"}), 500
+
+    # Call sudoku with the explicit path so it doesn't rely on guesswork.
+    grid = sudoku(temp_image_path)
+    print(grid)
+    if grid is None:
+        # The GetSudoku module prints diagnostic information on stderr; return
+        # a friendly JSON error so the front-end sees what went wrong.
+        return jsonify({"error": "Failed to extract grid from image. Check server logs for details (model or image processing error)."}), 500
+
+    return jsonify({"grid": grid.tolist()})
 
 @app.route('/solve',methods=['POST'])
 def solve():

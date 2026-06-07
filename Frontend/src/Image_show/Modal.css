@@ -9,30 +9,86 @@
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
+    padding: clamp(1rem, 3vw, 2rem);
   }
   
   .modal-content {
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     position: relative;
-    padding: 32px;
-    max-width: 500px;
+    padding: clamp(1rem, 4vw, 2rem);
+    max-width: min(90vw, 500px);
     width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: clamp(4px, 1vw, 8px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+    margin: auto;
   }
   
   .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #0070B1;
+    top: clamp(8px, 2vw, 10px);
+    right: clamp(8px, 2vw, 10px);
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
     color: #fff;
     border: none;
-    padding: 5px;
+    padding: clamp(6px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
+    min-width: clamp(32px, 4vw, 40px);
+    height: clamp(24px, 4vw, 32px);
     cursor: pointer;
     border-radius: 4px;
+    display: flex;
+    font-size: clamp(12px, 2vw, 16px);
+    transition: all 0.2s ease;
+    z-index: 1001;
+    font-weight: bold;
+  }
+
+  .close-btn:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(to right, #2563eb, #7c3aed);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Media Queries */
+  @media screen and (max-width: 768px) {
+    .modal-overlay {
+      padding: 0.5rem;
+    }
+    
+    .modal-content {
+      padding: 1rem;
+      width: 95vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .modal-overlay {
+      padding: 0;
+      align-items: flex-start;
+    }
+
+    .modal-content {
+      min-height: 100vh;
+      border-radius: 0;
+      padding: 1rem 0.5rem;
+    }
+
+    .close-btn {
+      top: 1rem;
+      right: 1rem;
+    }
+  }
+
+  /* Touch device optimization */
+  @media (hover: none) {
+    .close-btn {
+      padding: clamp(8px, 2vw, 12px);
+      width: clamp(32px, 5vw, 40px);
+      height: clamp(32px, 5vw, 40px);
+    }
   }
   
