@@ -11,6 +11,14 @@ app = Flask(__name__)
 
 CORS(app, origins=["*"])
 
+import pickle
+
+model_path = os.path.join(os.path.dirname(__file__), 'Model', 'model.pkl')
+print("Loading model at startup...")
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+print("Model loaded successfully!")
+
 @app.route('/')
 def index():
     return "Hello, welcome to the prediction API!"
