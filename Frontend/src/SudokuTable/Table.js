@@ -1,5 +1,6 @@
 import React from 'react';
 import './table.css';
+import API_BASE from '../config';
 
 const Table = ({ matrix, setMatrix, predictedMatrix, isDarkMode }) => {
   const handleInput = (row, col, e) => {
@@ -20,7 +21,7 @@ const Table = ({ matrix, setMatrix, predictedMatrix, isDarkMode }) => {
   
   const solve = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/solve', {
+      const response = await fetch(`${API_BASE}/solve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,12 +30,19 @@ const Table = ({ matrix, setMatrix, predictedMatrix, isDarkMode }) => {
       });
       
       if (!response.ok) {
+        const errorData = await response.json();
+        if (errorData && errorData.Error === 'Invalid Sudoku') {
+            alert('Invalid Sudoku! Please enter a correct one.');
+            return;
+        }
         throw new Error('Failed to solve the puzzle');
       }
 
       const solvedMatrix = await response.json();
       if (solvedMatrix && solvedMatrix.ans) {
         setMatrix(solvedMatrix.ans);
+      } else if (solvedMatrix && solvedMatrix.Error) {
+        alert('Invalid Sudoku! Please check the sudoku and try again.');
       } else {
         console.error('Invalid Input');
       }

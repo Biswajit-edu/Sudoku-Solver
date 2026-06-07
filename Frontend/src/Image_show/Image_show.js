@@ -3,6 +3,7 @@ import { HiOutlineUpload } from "react-icons/hi";
 import "./Image_show.css";
 import Modal from "./Modal";
 import axios from 'axios';
+import API_BASE from '../config';
 
 const Image_show = ({ matrix, setMatrix, setPredictedMatrix, isDarkMode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,7 +37,7 @@ const Image_show = ({ matrix, setMatrix, setPredictedMatrix, isDarkMode }) => {
       const formData = new FormData();
       formData.append('img', imageFile);
 
-      const response = await axios.post('http://127.0.0.1:5000/predict', formData, {
+      const response = await axios.post(`${API_BASE}/predict`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

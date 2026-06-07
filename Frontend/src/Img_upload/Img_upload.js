@@ -4,11 +4,12 @@ import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import "./Img_upload.css";
 
-const defaultSrc =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg/1200px-Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg.png";
+
+// set the sudoku.jpg image present in the curent directory as defaultSrc
+const defaultImage = require('./sudoku.jpg');
 
   const Img_upload = ({ onCrop, isDarkMode}) => {
-    const [image, setImage] = useState(defaultSrc);
+    const [image, setImage] = useState(defaultImage);
     const [cropper, setCropper] = useState(null);
   
     const onChange = (e) => {
@@ -33,7 +34,7 @@ const defaultSrc =
     return (
       <div className={`cont ${isDarkMode ? 'dark_comp' : 'light_comp'}`}>
         <div style={{ width: "100%", maxWidth: "100%" }}>
-          <button style={{ marginBottom: '8px' }} onClick={() => setImage(defaultSrc)}>Use default image</button>
+          <button style={{ marginBottom: '8px' }} onClick={() => setImage(defaultImage)}>Use default image</button>
           <Cropper
             zoomTo={0.2}
             initialAspectRatio={1}
