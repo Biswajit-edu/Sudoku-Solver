@@ -36,7 +36,7 @@ def predict():
 
     # Call sudoku with the explicit path so it doesn't rely on guesswork.
     grid = sudoku(temp_image_path)
-    print(grid)
+    # print(grid)
     if grid is None:
         # The GetSudoku module prints diagnostic information on stderr; return
         # a friendly JSON error so the front-end sees what went wrong.
@@ -60,4 +60,5 @@ def solve():
     
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    debug = os.environ.get('FLASK_ENV') != 'production'
+    app.run(host='0.0.0.0', port=port, debug=debug)

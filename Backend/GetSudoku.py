@@ -16,7 +16,6 @@ model_path = os.path.join(os.path.dirname(__file__), 'Model', 'model.pkl')
 # lazily inside get_grid before prediction.
 
 def get_grid(image_path):
-    # Convert to absolute path and normalize
     try:
         absolute_path = os.path.abspath(image_path) 
         current_dir = os.path.dirname(absolute_path)
@@ -28,7 +27,7 @@ def get_grid(image_path):
         if sudoku is None:
             print(f"Error: Failed to process image at {absolute_path}")
             return None
-        # Resize the assembled sudoku image to 252x252 using OpenCV
+        
         sudoku = cv2.resize(sudoku, (252, 252), interpolation=cv2.INTER_AREA)
         grid = np.zeros([9, 9])
         
@@ -36,15 +35,10 @@ def get_grid(image_path):
             print(f"Error: Model file not found at {model_path}")
             return None
             
-        # Create a robust unpickler that redirects references from the
-        # standalone `keras` module to `tensorflow.keras` when possible.
-        # This helps unpickle files that were created in environments with
-        # the standalone keras package while running in an environment that
-        # uses TensorFlow's bundled Keras.
+       
         class KerasRedirectUnpickler(pickle.Unpickler):
             def find_class(self, module, name):
-                # If the pickle refers to the standalone `keras` package,
-                # try to resolve it to `tensorflow.keras` instead.
+               
                 if module == 'keras' or module.startswith('keras.'):
                     try:
                         import tensorflow as _tf
@@ -52,49 +46,22 @@ def get_grid(image_path):
                         mod = __import__(new_module, fromlist=[name])
                         return getattr(mod, name)
                     except Exception:
-                        # let base class try (this will raise if not found)
+                       
                         pass
                 return super().find_class(module, name)
 
-        # Use the custom unpickler so that model classes referenced as
-        # `keras.*` in the pickle can be resolved to `tensorflow.keras.*`.
         try:
             with open(model_path, 'rb') as file:
                 model = KerasRedirectUnpickler(file).load()
         except ModuleNotFoundError as mnfe:
-            # Common case: neither `tensorflow` nor `keras` is installed.
+            
             if 'keras' in str(mnfe):
                 print('\nError: A required dependency for loading the model is missing:')
                 print('  ModuleNotFoundError:', str(mnfe))
-                print('\nQuick fix: install TensorFlow (which provides `tensorflow.keras`)')
-                print('  pip install tensorflow')
-                print('\nOr install the standalone Keras package:')
-                print('  pip install keras')
-                print('\nAfter installing, restart the server and try again.')
             raise
         
         for i in range(9):
             for j in range(9):
-                
-                # image = sudoku[i*28:(i+1)*28, j*28:(j+1)*28]
-
-                # ink_ratio = np.count_nonzero(image) / image.size
-                # if ink_ratio < 0.03:
-                #     grid[i][j] = 0
-                #     continue
-
-                # image = image[3:25, 3:25]
-                # image = cv2.resize(image, (28, 28))
-                # image = image.astype('float32') / 255.0
-                # image = image.reshape(1, 28, 28, 1)
-
-                # prediction = model.predict(image)
-                # if np.max(prediction) < 0.8:
-                #     grid[i][j] = 0
-                # else:
-                #     grid[i][j] = np.argmax(prediction)
-
-                
                  image = sudoku[i*28:(i+1)*28, j*28:(j+1)*28]
                 #  image = image_cell[1:27, 1:27]
                  ink_ratio = np.count_nonzero(image) / image.size
@@ -117,7 +84,7 @@ def get_grid(image_path):
                      grid[i][j] = predicted_label
                  else:
                      grid[i][j] = 0
-                 print(f"Predicted digit at cell ({i}, {j}): {grid[i][j]}")
+                #  print(f"Predicted digit at cell ({i}, {j}): {grid[i][j]}")
         return grid.astype(int)
         
     except Exception as e:
@@ -141,19 +108,19 @@ def sudoku(image_path='sudoku.png'):
                 if sudoku_grid is not None:
                     return sudoku_grid
         
-        print("\nCould not find the image in any of the expected locations.")
+        # print("\nCould not find the image in any of the expected locations.")
         return None
         
     except Exception as e:
-        print(f"Error in sudoku function: {str(e)}")
+        # print(f"Error in sudoku function: {str(e)}")
         import traceback
         traceback.print_exc()
         return None
     
-def print_board(board):
-    for row in board:
-        print(" ".join(str(num) if num != 0 else '.' for num in row))
+# def print_board(board):
+#     for row in board:
+#         print(" ".join(str(num) if num != 0 else '.' for num in row))
 
-if __name__ == '__main__':
-    result = sudoku()
-    print_board(result)
+# if __name__ == '__main__':
+#     result = sudoku()
+#     print_board(result)
